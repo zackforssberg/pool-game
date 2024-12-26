@@ -78,7 +78,7 @@ export default function PoolGame() {
       {playerNumbers && currentPlayer !== null && (
         <div className="p-4 bg-white rounded-md shadow-md mb-4">
           <h2 className="text-lg font-bold mb-2">
-            Player {currentPlayer + 1}'s Numbers:
+            Player {currentPlayer + 1}&apos;s Numbers:
           </h2>
           {numbersRevealed ? (
             <p className="text-xl font-mono">
