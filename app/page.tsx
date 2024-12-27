@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const generateUniqueNumbers = (
   numPlayers: number,
@@ -55,6 +56,11 @@ export default function PoolGame() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-4 bg-gray-100">
       <h1 className="text-2xl font-bold mb-4">Pool Game Setup</h1>
+      <Link className="mb-4" href="/rules">
+        <button className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors duration-300">
+          How to play
+        </button>
+      </Link>
       <h2 className="text-xl font-bold mb-4">Select number of players</h2>
 
       <div className="flex space-x-4 mb-6">
@@ -73,7 +79,6 @@ export default function PoolGame() {
 
       <button
         onClick={handleGenerateNumbers}
-        // disabled={numPlayers === null}
         disabled={numPlayers === null || playerNumbers !== null}
         className="px-4 py-2 mb-4 bg-green-500 text-white rounded-md hover:bg-green-600 disabled:opacity-50 disabled:cursor-not-allowed"
       >
