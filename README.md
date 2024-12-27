@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Pool Game Setup
 
-## Getting Started
+### Description
 
-First, run the development server:
+This is a fun and interactive pool game setup designed for 2 to 5 players. Each player is randomly assigned a set of three unique pool ball numbers from a total of 15 balls. The goal is to get rid of all the other balls and be the first to clear your set of numbers. Each player will not know the numbers of the other players, ensuring fairness and surprise!
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### How to Play
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1.  Select Number of Players:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Choose the number of players (between 2 and 5) by clicking the corresponding button.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+3.  Generate Random Pool Balls:
 
-## Learn More
+- Once the number of players is selected, click the "Generate Numbers" button to generate and assign 3 random pool ball numbers to each player. These numbers are assigned without overlap, so no two players will have the same numbers.
 
-To learn more about Next.js, take a look at the following resources:
+5.  View Assigned Pool Balls:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Each player will get a chance to see their assigned pool balls. After clicking the "Show Numbers" button, the corresponding pool ball images will appear.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Once the numbers are revealed, they will be hidden again after moving to the next player.
 
-## Deploy on Vercel
+7.  Next Player:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- After a player has seen their numbers, you can click "Next Player" to proceed to the next player.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- If it's the last player's turn, the button will change to "Start Over", allowing you to restart the game and assign new random numbers to the players.
+
+9.  Objective:
+
+- The game's objective is to eliminate all the other balls from your set. Each player's numbers are unique, so there will be no overlap between players.
+
+### Notes:
+
+- The game is designed for fair play, with each player seeing their own numbers but never knowing the numbers of others.
+
+- The pool balls are represented by images, giving the game a more realistic look and feel.
+
+To play the game got to: <https://pool-game-zack-forssbergs-projects.vercel.app/>
