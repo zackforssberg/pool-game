@@ -38,7 +38,10 @@ export default function PoolGame() {
       setCurrentPlayer(currentPlayer + 1);
       setNumbersRevealed(false); // Hide numbers before the next player can view
     } else {
-      setCurrentPlayer(null); // Reset to start over after the last player
+      // Reset game state
+      setCurrentPlayer(null);
+      setPlayerNumbers(null);
+      setNumPlayers(null); // Allow selecting the number of players again
       setNumbersRevealed(false); // Hide numbers for the new round
     }
   };
