@@ -3,20 +3,29 @@ import Link from "next/link";
 export default function RulesPage() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-6 bg-gray-100">
-      <h1 className="text-3xl font-bold mb-4">How to Play Pool Game</h1>
+      <h1 className="text-3xl font-bold mb-4 text-center">
+        How to Play <br /> Last Ball Standing
+      </h1>
       <div className="bg-white rounded-md shadow-md p-6 max-w-3xl text-lg space-y-4">
         <p>
-          Welcome to the Pool Game! This fun and engaging game is designed for 2
-          to 5 players. Each player will be assigned three random pool balls,
-          and the objective is to eliminate all balls except your own while
-          keeping your numbers hidden from other players.
+          Welcome to <span className="font-bold">Last Ball Standing</span>! This
+          fun and engaging game is designed for 2 to 10 players. Each player
+          will be assigned a set of random pool balls, and the objective is to
+          eliminate all balls except your own while keeping your numbers hidden
+          from other players.
         </p>
 
         <h2 className="text-2xl font-semibold">Game Setup</h2>
         <ol className="list-decimal pl-6">
           <li>
-            At the start, select the number of players (2, 3, 4, or 5) by
-            clicking one of the buttons on the home screen.
+            At the start, select the number of players (2 to 10) using the{" "}
+            <span className="font-bold">+</span> and{" "}
+            <span className="font-bold">-</span> buttons on the home screen.
+          </li>
+          <li>
+            Choose the number of balls each player will receive. Note that the
+            game automatically disables invalid options based on the total
+            number of balls available.
           </li>
           <li>
             Click the <span className="font-bold">Generate Numbers</span> button
