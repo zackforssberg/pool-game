@@ -20,14 +20,18 @@ const generateUniqueNumbers = (
 };
 
 export default function PoolGame() {
-  const [numPlayers, setNumPlayers] = useState<number | null>(null);
+  const [numPlayers, setNumPlayers] = useState<number>(3); // Default 3 players
+  const [numbersPerPlayer, setNumbersPerPlayer] = useState<number | null>(null);
   const [playerNumbers, setPlayerNumbers] = useState<number[][] | null>(null);
   const [currentPlayer, setCurrentPlayer] = useState<number | null>(null);
   const [numbersRevealed, setNumbersRevealed] = useState<boolean>(false);
 
   const handleGenerateNumbers = () => {
-    if (numPlayers) {
-      const generatedNumbers = generateUniqueNumbers(numPlayers, 3);
+    if (numPlayers && numbersPerPlayer) {
+      const generatedNumbers = generateUniqueNumbers(
+        numPlayers,
+        numbersPerPlayer
+      );
       setPlayerNumbers(generatedNumbers);
       setCurrentPlayer(0); // Start with the first player
       setNumbersRevealed(false); // Reset to hide numbers initially
@@ -42,7 +46,6 @@ export default function PoolGame() {
       // Reset game state
       setCurrentPlayer(null);
       setPlayerNumbers(null);
-      setNumPlayers(null); // Allow selecting the number of players again
       setNumbersRevealed(false); // Hide numbers for the new round
     }
   };
@@ -53,6 +56,14 @@ export default function PoolGame() {
     }
   };
 
+  const increasePlayers = () => {
+    if (numPlayers < 10) setNumPlayers(numPlayers + 1);
+  };
+
+  const decreasePlayers = () => {
+    if (numPlayers > 2) setNumPlayers(numPlayers - 1);
+  };
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-4 bg-gray-100">
       <h1 className="text-2xl font-bold mb-4">Pool Game Setup</h1>
@@ -61,25 +72,45 @@ export default function PoolGame() {
           How to play
         </button>
       </Link>
-      <h2 className="text-xl font-bold mb-4">Select number of players</h2>
 
+      <h2 className="text-xl font-bold mb-4">Select number of players</h2>
+      <div className="flex items-center space-x-4 mb-6">
+        <button
+          onClick={decreasePlayers}
+          className="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600"
+        >
+          -
+        </button>
+        <span className="text-lg font-bold">{numPlayers}</span>
+        <button
+          onClick={increasePlayers}
+          className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600"
+        >
+          +
+        </button>
+      </div>
+
+      <h2 className="text-xl font-bold mb-4">Select numbers per player</h2>
       <div className="flex space-x-4 mb-6">
-        {[2, 3, 4, 5].map((players) => (
+        {[1, 2, 3, 4, 5].map((numbers) => (
           <button
-            key={players}
-            onClick={() => setNumPlayers(players)}
-            className={`px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 ${
-              numPlayers === players ? "ring-4 ring-blue-300" : ""
-            }`}
+            key={numbers}
+            onClick={() => setNumbersPerPlayer(numbers)}
+            disabled={numPlayers * numbers > 15} // Disable if the total exceeds 15 balls
+            className={`px-4 py-2 text-white rounded-md ${
+              numPlayers * numbers > 15
+                ? "bg-gray-300 cursor-not-allowed"
+                : "bg-blue-500 hover:bg-blue-600"
+            } ${numbersPerPlayer === numbers ? "ring-4 ring-blue-300" : ""}`}
           >
-            {players}
+            {numbers}
           </button>
         ))}
       </div>
 
       <button
         onClick={handleGenerateNumbers}
-        disabled={numPlayers === null || playerNumbers !== null}
+        disabled={numbersPerPlayer === null || playerNumbers !== null}
         className="px-4 py-2 mb-4 bg-green-500 text-white rounded-md hover:bg-green-600 disabled:opacity-50 disabled:cursor-not-allowed"
       >
         Generate Numbers
