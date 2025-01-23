@@ -21,7 +21,7 @@ const generateUniqueNumbers = (
 
 export default function PoolGame() {
   const [numPlayers, setNumPlayers] = useState<number>(3); // Default 3 players
-  const [numbersPerPlayer, setNumbersPerPlayer] = useState<number | null>(null);
+  const [numbersPerPlayer, setNumbersPerPlayer] = useState<number | null>(3); // Default 3 balls per player
   const [playerNumbers, setPlayerNumbers] = useState<number[][] | null>(null);
   const [currentPlayer, setCurrentPlayer] = useState<number | null>(null);
   const [numbersRevealed, setNumbersRevealed] = useState<boolean>(false);
@@ -57,11 +57,25 @@ export default function PoolGame() {
   };
 
   const increasePlayers = () => {
-    if (numPlayers < 10) setNumPlayers(numPlayers + 1);
+    if (numPlayers < 10) {
+      setNumPlayers(numPlayers + 1);
+      adjustBallsPerPlayer(numPlayers + 1);
+    }
   };
 
   const decreasePlayers = () => {
-    if (numPlayers > 2) setNumPlayers(numPlayers - 1);
+    if (numPlayers > 2) {
+      setNumPlayers(numPlayers - 1);
+      adjustBallsPerPlayer(numPlayers - 1);
+    }
+  };
+
+  // Function to adjust balls per player based on number of players
+  const adjustBallsPerPlayer = (newNumPlayers: number) => {
+    if (numbersPerPlayer && newNumPlayers * numbersPerPlayer > 15) {
+      const maxBallsPerPlayer = Math.floor(15 / newNumPlayers);
+      setNumbersPerPlayer(maxBallsPerPlayer); // Adjust to the maximum possible
+    }
   };
 
   return (
