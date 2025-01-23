@@ -22,19 +22,11 @@ export default function RulesPage() {
             <span className="font-bold">+</span> and{" "}
             <span className="font-bold">-</span> buttons on the home screen.
           </li>
-          <li>
-            Choose the number of balls each player will receive. Note that the
-            game automatically disables invalid options based on the total
-            number of balls available.
-          </li>
+          <li>Choose the number of balls each player will receive.</li>
           <li>
             Click the <span className="font-bold">Generate Numbers</span> button
             to shuffle and assign numbers to the players.
           </li>
-        </ol>
-
-        <h2 className="text-2xl font-semibold">How to Play</h2>
-        <ol className="list-decimal pl-6">
           <li>
             The first player clicks the{" "}
             <span className="font-bold">Show Numbers</span> button to reveal
@@ -56,11 +48,18 @@ export default function RulesPage() {
           </li>
         </ol>
 
-        <h2 className="text-2xl font-semibold">Objective</h2>
+        <h2 className="text-2xl font-semibold">How to Play</h2>
         <p>
           Each player&apos;s goal is to eliminate all pool balls except their
-          own. Use strategy and skill to outlast your opponents and claim
-          victory!
+          own.
+        </p>
+        <p>
+          The game is played in turns, with each player taking actions to
+          eliminate pool balls. You not allowed to continue playing even if you
+          pocket a ball.
+        </p>
+        <p>
+          Use strategy and skill to outlast your opponents and claim victory!
         </p>
 
         <p className="italic">Have fun and may the best player win!</p>
