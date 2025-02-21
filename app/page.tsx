@@ -140,7 +140,8 @@ export default function PoolGame() {
               {playerNumbers[currentPlayer].map((num) => (
                 <Image
                   key={num}
-                  src={`/images/ball${num}.png`} // Use ball images from public folder
+                  // src={`/images/png-images/ball${num}.png`} // Use ball images from public folder
+                  src={`/images/avif-images/ball${num}.avif`} // Use ball images from public folder
                   alt={`Ball ${num}`}
                   height={48}
                   width={48}
