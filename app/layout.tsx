@@ -21,11 +21,11 @@ export const metadata: Metadata = {
     title: "Last Ball Standing - Fun Pool Game",
     description:
       "Try out this unique pool game where players get random numbers. Compete and win!",
-    url: "https://yourwebsite.com", // Change to your actual site URL
+    url: "https://yourwebsite.com",
     siteName: "Last Ball Standing",
     images: [
       {
-        url: "/images/preview.png", // Ensure this image exists in your public folder
+        url: "/images/preview.png",
         width: 1200,
         height: 630,
         alt: "Preview of Last Ball Standing",
