@@ -131,7 +131,7 @@ export default function PoolGame() {
       </button>
 
       {playerNumbers && currentPlayer !== null && (
-        <div className="p-4 bg-white rounded-md shadow-md mb-4">
+        <div className="p-4 bg-secondary rounded-md shadow-md mb-4">
           <h2 className="text-lg font-bold mb-2">
             Player {currentPlayer + 1}&apos;s Numbers:
           </h2>

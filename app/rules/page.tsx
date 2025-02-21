@@ -6,7 +6,7 @@ export default function RulesPage() {
       <h1 className="text-3xl font-bold mb-4 text-center">
         How to Play <br /> Last Ball Standing
       </h1>
-      <div className="rounded-md shadow-md p-6 max-w-3xl text-lg space-y-4">
+      <div className="rounded-md shadow-md p-6 max-w-3xl text-lg space-y-4 bg-secondary">
         <p>
           Welcome to <span className="font-bold">Last Ball Standing</span>! This
           fun and engaging game is designed for 2 to 10 players. Each player
