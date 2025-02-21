@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -12,9 +11,41 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
+// Define the Verification type
+type Verification = {
+  code: string;
+  method: string;
+};
+
+// Define the Metadata type
+type LocalMetadata = {
+  title: string;
+  description: string;
+  verification: Verification;
+  keywords: string[];
+  authors: { name: string }[];
+  openGraph: {
+    title: string;
+    description: string;
+    url: string;
+    siteName: string;
+    images: { url: string; width: number; height: number; alt: string }[];
+    type: string;
+  };
+  robots: {
+    index: boolean;
+    follow: boolean;
+  };
+};
+
+// Update the metadata object
+export const metadata: LocalMetadata = {
   title: "Last Ball Standing",
   description: "Pool game created by Zack Forssberg",
+  verification: {
+    code: "D5kIqZcqSjghRWAvYEDC5Rhff2kr856GOkLqelt85L4",
+    method: "manual",
+  },
   keywords: ["pool game", "billiards", "last ball standing", "fun games"],
   authors: [{ name: "Zack Forssberg" }],
   openGraph: {
@@ -39,6 +70,34 @@ export const metadata: Metadata = {
   },
 };
 
+// export const metadata: Metadata = {
+//   title: "Last Ball Standing",
+//   description: "Pool game created by Zack Forssberg",
+//   verification: "D5kIqZcqSjghRWAvYEDC5Rhff2kr856GOkLqelt85L4",
+//   keywords: ["pool game", "billiards", "last ball standing", "fun games"],
+//   authors: [{ name: "Zack Forssberg" }],
+//   openGraph: {
+//     title: "Last Ball Standing - Fun Pool Game",
+//     description:
+//       "Try out this unique pool game where players get random numbers. Compete and win!",
+//     url: "https://yourwebsite.com",
+//     siteName: "Last Ball Standing",
+//     images: [
+//       {
+//         url: "/images/preview.png",
+//         width: 1200,
+//         height: 630,
+//         alt: "Preview of Last Ball Standing",
+//       },
+//     ],
+//     type: "website",
+//   },
+//   robots: {
+//     index: true,
+//     follow: true,
+//   },
+// };
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -47,10 +106,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <meta
+        {/* <meta
           name="google-site-verification"
           content="D5kIqZcqSjghRWAvYEDC5Rhff2kr856GOkLqelt85L4"
-        />
+        /> */}
         <link
           rel="apple-touch-icon"
           sizes="180x180"
