@@ -15,6 +15,28 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Last Ball Standing",
   description: "Pool game created by Zack Forssberg",
+  keywords: ["pool game", "billiards", "last ball standing", "fun games"],
+  authors: [{ name: "Zack Forssberg" }],
+  openGraph: {
+    title: "Last Ball Standing - Fun Pool Game",
+    description:
+      "Try out this unique pool game where players get random numbers. Compete and win!",
+    url: "https://yourwebsite.com", // Change to your actual site URL
+    siteName: "Last Ball Standing",
+    images: [
+      {
+        url: "/images/preview.png", // Ensure this image exists in your public folder
+        width: 1200,
+        height: 630,
+        alt: "Preview of Last Ball Standing",
+      },
+    ],
+    type: "website",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
