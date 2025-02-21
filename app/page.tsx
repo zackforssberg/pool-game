@@ -153,30 +153,32 @@ export default function PoolGame() {
           )}
         </div>
       )}
-
-      <div className="flex space-x-4 mb-6">
-        {numbersRevealed ? (
-          <button
-            onClick={handleNextPlayer}
-            className={`px-4 py-2 text-white rounded-md ${
-              currentPlayer === (numPlayers ?? 0) - 1
-                ? "bg-red-500 hover:bg-red-600"
-                : "bg-green-500 hover:bg-green-600"
-            }`}
-          >
-            {currentPlayer === (numPlayers ?? 0) - 1
-              ? "Start Over"
-              : "Next Player"}
-          </button>
-        ) : (
-          <button
-            onClick={handleShowNumbers}
-            className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
-          >
-            Show Numbers
-          </button>
-        )}
-      </div>
+      {numbersPerPlayer === null ||
+        (playerNumbers !== null && (
+          <div className="flex space-x-4 mb-6">
+            {numbersRevealed ? (
+              <button
+                onClick={handleNextPlayer}
+                className={`px-4 py-2 text-white rounded-md ${
+                  currentPlayer === (numPlayers ?? 0) - 1
+                    ? "bg-red-500 hover:bg-red-600"
+                    : "bg-green-500 hover:bg-green-600"
+                }`}
+              >
+                {currentPlayer === (numPlayers ?? 0) - 1
+                  ? "Start Over"
+                  : "Next Player"}
+              </button>
+            ) : (
+              <button
+                onClick={handleShowNumbers}
+                className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+              >
+                Show Numbers
+              </button>
+            )}
+          </div>
+        ))}
       <p className="mt-40">Created by Zack Forssberg</p>
     </div>
   );
