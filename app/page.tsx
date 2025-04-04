@@ -131,8 +131,8 @@ export default function PoolGame() {
       </button>
 
       {playerNumbers && currentPlayer !== null && (
-        <div className="p-4 rounded-md bg-secondary shadow-md mb-4">
-          <h2 className="text-lg font-bold mb-2">
+        <div className="p-4 rounded-md shadow-md mb-4">
+          <h2 className="text-lg text-black font-bold mb-2">
             Player {currentPlayer + 1}&apos;s Numbers:
           </h2>
           {numbersRevealed ? (
@@ -150,7 +150,7 @@ export default function PoolGame() {
               ))}
             </div>
           ) : (
-            <p className="text-xl font-mono text-center">----</p> // Placeholder when numbers are hidden
+            <p className="text-xl text-black font-mono text-center">----</p> // Placeholder when numbers are hidden
           )}
         </div>
       )}
