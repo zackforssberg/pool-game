@@ -36,4 +36,4 @@ This is a fun and interactive pool game setup designed for 2 to 5 players. Each 
 
 - The pool balls are represented by images, giving the game a more realistic look and feel.
 
-To play the game got to: <https://pool-game-zack-forssbergs-projects.vercel.app/>
+To play the game got to: [<[https://pool-game-zack-forssbergs-projects.vercel.app/](https://pool.zackforssberg.se)>](https://pool.zackforssberg.se/)
