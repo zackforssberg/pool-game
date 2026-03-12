@@ -21,7 +21,7 @@ const generateUniqueNumbers = (
 
 export default function PoolGame() {
   const [numPlayers, setNumPlayers] = useState<number>(3); // Default 3 players
-  const [numbersPerPlayer, setNumbersPerPlayer] = useState<number | null>(null);
+  const [numbersPerPlayer, setNumbersPerPlayer] = useState<number | null>(3); // Default 3 balls per player
   const [playerNumbers, setPlayerNumbers] = useState<number[][] | null>(null);
   const [currentPlayer, setCurrentPlayer] = useState<number | null>(null);
   const [numbersRevealed, setNumbersRevealed] = useState<boolean>(false);
@@ -57,11 +57,25 @@ export default function PoolGame() {
   };
 
   const increasePlayers = () => {
-    if (numPlayers < 10) setNumPlayers(numPlayers + 1);
+    if (numPlayers < 10) {
+      setNumPlayers(numPlayers + 1);
+      adjustBallsPerPlayer(numPlayers + 1);
+    }
   };
 
   const decreasePlayers = () => {
-    if (numPlayers > 2) setNumPlayers(numPlayers - 1);
+    if (numPlayers > 2) {
+      setNumPlayers(numPlayers - 1);
+      adjustBallsPerPlayer(numPlayers - 1);
+    }
+  };
+
+  // Function to adjust balls per player based on number of players
+  const adjustBallsPerPlayer = (newNumPlayers: number) => {
+    if (numbersPerPlayer && newNumPlayers * numbersPerPlayer > 15) {
+      const maxBallsPerPlayer = Math.floor(15 / newNumPlayers);
+      setNumbersPerPlayer(maxBallsPerPlayer); // Adjust to the maximum possible
+    }
   };
 
   return (
@@ -117,8 +131,8 @@ export default function PoolGame() {
       </button>
 
       {playerNumbers && currentPlayer !== null && (
-        <div className="p-4 bg-white rounded-md shadow-md mb-4">
-          <h2 className="text-lg font-bold mb-2">
+        <div className="p-4 rounded-md shadow-md mb-4">
+          <h2 className="text-lg text-black font-bold mb-2">
             Player {currentPlayer + 1}&apos;s Numbers:
           </h2>
           {numbersRevealed ? (
@@ -126,7 +140,8 @@ export default function PoolGame() {
               {playerNumbers[currentPlayer].map((num) => (
                 <Image
                   key={num}
-                  src={`/images/ball${num}.png`} // Use ball images from public folder
+                  // src={`/images/png-images/ball${num}.png`} // Use ball images from public folder
+                  src={`/images/avif-images/ball${num}.avif`} // Use ball images from public folder
                   alt={`Ball ${num}`}
                   height={48}
                   width={48}
@@ -135,34 +150,36 @@ export default function PoolGame() {
               ))}
             </div>
           ) : (
-            <p className="text-xl font-mono text-center">----</p> // Placeholder when numbers are hidden
+            <p className="text-xl text-black font-mono text-center">----</p> // Placeholder when numbers are hidden
           )}
         </div>
       )}
-
-      <div className="flex space-x-4 mb-6">
-        {numbersRevealed ? (
-          <button
-            onClick={handleNextPlayer}
-            className={`px-4 py-2 text-white rounded-md ${
-              currentPlayer === (numPlayers ?? 0) - 1
-                ? "bg-red-500 hover:bg-red-600"
-                : "bg-green-500 hover:bg-green-600"
-            }`}
-          >
-            {currentPlayer === (numPlayers ?? 0) - 1
-              ? "Start Over"
-              : "Next Player"}
-          </button>
-        ) : (
-          <button
-            onClick={handleShowNumbers}
-            className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
-          >
-            Show Numbers
-          </button>
-        )}
-      </div>
+      {numbersPerPlayer === null ||
+        (playerNumbers !== null && (
+          <div className="flex space-x-4 mb-6">
+            {numbersRevealed ? (
+              <button
+                onClick={handleNextPlayer}
+                className={`px-4 py-2 text-white rounded-md ${
+                  currentPlayer === (numPlayers ?? 0) - 1
+                    ? "bg-red-500 hover:bg-red-600"
+                    : "bg-green-500 hover:bg-green-600"
+                }`}
+              >
+                {currentPlayer === (numPlayers ?? 0) - 1
+                  ? "Start Over"
+                  : "Next Player"}
+              </button>
+            ) : (
+              <button
+                onClick={handleShowNumbers}
+                className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+              >
+                Show Numbers
+              </button>
+            )}
+          </div>
+        ))}
       <p className="mt-40">Created by Zack Forssberg</p>
     </div>
   );
